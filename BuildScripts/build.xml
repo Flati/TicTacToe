@@ -5,6 +5,7 @@
 	<!-- "MSBuild Community Tasks" is needed for the nunit task -->
 	<!-- get it at http://msbuildtasks.tigris.org/ -->
 	<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+  
 
 
 	<!-- Paths used troughout the script. This needs to be changed if default is not used-->
@@ -12,9 +13,24 @@
 	<ApplicationPath>C:\Checkout\TicTacToe\TicTacToeApplication\TicTacToeApplication</ApplicationPath>
 	<TestPath>C:\Checkout\TicTacToe\TicTacToeApplication\Test</TestPath>
 	<NUnitPath>C:\Checkout\NUnit</NUnitPath> <!--Modified NUnit binary is included and should not be changed-->
-	<PublishPath>C:\Checkout\Published</PublishPath>
+	<PublishPath>C:\Published</PublishPath>
 	<WebPath>C:\Ampps\www\orninn.com\TicTacToe\%(CreatedTime)\</WebPath>
   </PropertyGroup>
+  
+  
+  
+		  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+		<Optimize>false</Optimize>
+		<DebugSymbols>true</DebugSymbols>
+		<OutputPath>$(ApplicationPath)\bin\Debug</OutputPath>
+	  </PropertyGroup>
+	  
+	 
+	  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+		<Optimize>true</Optimize>
+		<DebugSymbols>false</DebugSymbols>
+		<OutputPath>$(ApplicationPath)\bin\Release</OutputPath>
+	  </PropertyGroup>
   
 	<!-- Clean the build folder -->  
   <Target Name="Clean"> <!--Clean the build directory for future build-->
@@ -25,7 +41,7 @@
 	 <Message Text="Files to delete : @(BinFiles)" />
     <Delete Files="$(BinFiles)" /> <!--Delete them!-->
     <Delete Files="$(PublishFiles)"/>
-	<RemoveDir Directories="$(ApplicationPath)\bin\"/>
+	<RemoveDir Directories="$(ApplicationPath)\bin"/>
 	<RemoveDir Directories="$(ApplicationPath)\Published"/>
   </Target>
   
@@ -33,35 +49,39 @@
 	<!-- Compile the Project and the Test -->
   <Target Name="Compile" DependsOnTargets="Clean"><!--This will not run unless we have cleaned-->
     <MSBuild Projects="$(ApplicationPath)\TicTacToeApplication.csproj" />
-	<MSBuild Projects="$(TestPath)\Test.csproj" />
   </Target>
+  
+  <Target Name="CompileTest" DependsOnTargets="Clean">
+  	<MSBuild Projects="$(TestPath)\Test.csproj" />
+    </Target>
+	
+  	<!-- Test the Project with NUnit --> 
+	<Target Name="Test">
+		<NUnit Assemblies="$(TestPath)\bin\Debug\Test.dll" ToolPath="$(NUnitPath)" DisableShadowCopy="true" /> 
+	</Target>
   
 	<Target Name="Publish">
 		<ItemGroup>
 		  <Executibles Include="$(ApplicationPath)\bin\Release\*.exe" />
 		  <Binaries Include="$(ApplicationPath)\bin\Release\*.dll" />
 		</ItemGroup>
-		<Copy SourceFiles ="$(Binaries)" DestinationFolder="$(PublishPath)" />
-		<Copy SourceFiles="$(Executibles)" DestinationFolder="$(PublishPath)" />
+		<Copy SourceFiles ="@(Binaries)" DestinationFolder="C:\Published" />
+		<Copy SourceFiles="@(Executibles)" DestinationFolder="C:\Published" />
 	</Target>
-  
-  <!-- Message is displayed at the bottom of the log file -->
-  
-  <Target Name="Message">
-        <Message Text="================================" />
-		<Message Text="=" />
-		<Message Text="= ÞETTA TÓKST" />
-		<Message Text="=" />
-		<Message Text="=================================" />
-    </Target>
 	
 	<!-- Target Run Sequence -->
   
-  <Target Name="Run">
+  <Target Name="Release">
     <CallTarget Targets="Clean"></CallTarget>
     <CallTarget Targets="Compile"></CallTarget>
 	<CallTarget Targets="Publish"></CallTarget>
-	<CallTarget Targets="Message"></CallTarget>
+  </Target>
+
+  <Target Name="Debug">
+    <CallTarget Targets="Clean"></CallTarget>
+    <CallTarget Targets="Compile"></CallTarget>
+    <CallTarget Targets="CompileTest"></CallTarget>
+	<CallTarget Targets="Test"></CallTarget>
   </Target>
   
 </Project>
