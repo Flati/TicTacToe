@@ -5,7 +5,7 @@ using System.Text;
 
 namespace TicTacToeApplication.code
 {
-    class Global
+    public class Global
     {
         public static string PLAYER1 = "X";
         public static string PLAYER2 = "O";
