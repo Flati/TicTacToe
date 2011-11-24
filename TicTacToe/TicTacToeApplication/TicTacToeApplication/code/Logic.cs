@@ -45,7 +45,7 @@ namespace TicTacToeApplication.code
 
 		public bool Tie()
 		{
-			return true;
+			return moveCounter > 8;
 		}
         #endregion
 
