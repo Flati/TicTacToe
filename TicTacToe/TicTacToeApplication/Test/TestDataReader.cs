@@ -109,5 +109,22 @@ namespace Test
             Assert.AreEqual(player2, Global.PLAYER2WIN);
             Assert.AreEqual(ties + 1, Global.TIENUMBER);
         }
+
+        [Test]
+        public void TestNoFileExists()
+        {
+            // 1. Arrange:
+            DataReader reader = new DataReader();
+            if (File.Exists(reader.path))
+            {
+                File.Delete(reader.path);
+            }
+
+            // 2. Act:
+            reader.Winning(Global.PLAYER1);
+
+            // 3. Assert:
+            Assert.IsTrue(File.Exists(reader.path));
+        }
     }
 }
