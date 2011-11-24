@@ -30,7 +30,17 @@ namespace TicTacToeApplication.code
         #region palli
 		public void MarkMatrix(int x, int y)
 		{
-
+			if (currentPlayer.Equals(Global.PLAYER1))
+			{
+				matrix[x][y] = "X";
+				currentPlayer = Global.PLAYER2;
+			}
+			else
+			{
+				matrix[x][y] = "O";
+				currentPlayer = Global.PLAYER1;
+			}
+			moveCounter++;
 		}
         #endregion
 

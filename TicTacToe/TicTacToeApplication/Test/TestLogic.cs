@@ -5,6 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using TicTacToeApplication.code;
 
+
 namespace Test
 {
     [TestFixture]
@@ -33,6 +34,8 @@ namespace Test
 		public void TestMarkMatrix()
 		{
 			// 1. Arrange:
+			Global.PLAYER1 = "Siggi";
+			Global.PLAYER2 = "Gunnar";
 			Logic logic = new Logic();
 			int x1 = 1, y1 = 2;
 			int x2 = 2, y2 = 1;
@@ -49,7 +52,7 @@ namespace Test
 			{
 				for (int j = 0; j < 3; j++)
 				{
-					if(i != x1 || i != x2 || j != y1 || j != y2)
+					if( !( i == x1 || i == x2 || j == y1 || j == y2) )
 					{
 						Assert.AreEqual(logic.matrix[i][j], "E");
 					}
