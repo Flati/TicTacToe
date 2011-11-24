@@ -161,7 +161,22 @@ namespace Test
             Assert.AreEqual(logic.currentPlayer, Global.PLAYER2);
         }
 
+        [Test]
+        /*********************************************************************
+        * This function will test the "WinSreen" function and see if it
+        * displays the correct winner.
+        *********************************************************************/
+        public void TestWinSreen()
+        {
+            // 1. Arrange:
+            String winner = "X";
 
+            // 2. Act:
+            DataReader dataReader = new DataReader();
+
+            // 3. Assert:
+            Assert.AreEqual(Global.winMessage, dataReader.winning());
+        }
 
         #endregion
 

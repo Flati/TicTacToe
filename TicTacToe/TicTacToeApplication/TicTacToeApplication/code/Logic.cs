@@ -63,6 +63,15 @@ namespace TicTacToeApplication.code
                 currentPlayer = Global.PLAYER1;
         }
 
+        /*********************************************************************
+        * This function will change what player is active.
+        * INPUT: winner of type String.
+        * OUTPUT: none.
+        *********************************************************************/
+        public void WinScreen(String winner)
+        {
+            Global.winMessage = dataReader.Winning(winner);
+        }
         #endregion
 
         #region petur
