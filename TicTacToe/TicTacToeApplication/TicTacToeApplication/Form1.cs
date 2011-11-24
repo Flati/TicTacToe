@@ -36,10 +36,7 @@ namespace TicTacToeApplication
         {
             logic.MarkMatrix(x, y);
             if (logic.IsWon() || logic.Tie())
-            {
-                //logic.WinScreen();
                 Close();
-            }
             logic.ChangePlayers();
         }
 
