@@ -54,6 +54,20 @@ namespace Test
             Assert.IsNotNull(logic.moveCounter);
             Assert.AreEqual(logic.moveCounter, 0);
         }
+
+        [Test]
+        public void TestIsAvailable()
+        {
+            // 1. Arrange:
+            Logic logic = new Logic();
+            // 2. Act:
+            logic.matrix[0][0] = "X";
+            logic.matrix[1][1] = "O";
+            // 3. Assert:
+            Assert.IsTrue(logic.IsAvailable(2, 2));
+            Assert.IsFalse(logic.IsAvailable(1, 1));
+            Assert.IsFalse(logic.IsAvailable(0, 0));
+        }
         #endregion
 
         #region hjalli

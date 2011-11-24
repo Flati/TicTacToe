@@ -31,6 +31,12 @@ namespace TicTacToeApplication.code
         #endregion
 
         #region flati
+        public bool IsAvailable(int x, int y)
+        {
+            if (matrix[x][y] == "E")
+                return true;
+            return false;
+        }
         #endregion
 
         #region hjalli
