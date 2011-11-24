@@ -13,15 +13,21 @@ namespace TicTacToeApplication
         * game until the user doesn't want to play anymore.
         *********************************************************************/
         [STAThread]
-        static void Main()
+        static int Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            while (Global.PLAY_AGAIN)
+            if (args.Length == 0)
             {
-                Application.Run(new Form1());
-                Application.Run(new StatisticsForm());
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                while (Global.PLAY_AGAIN)
+                {
+                    Application.Run(new Form1());
+                    Application.Run(new StatisticsForm());
+                }
             }
+            else if (args[0] == "test")
+                return 0;
+            return 0;
         }
     }
 }
