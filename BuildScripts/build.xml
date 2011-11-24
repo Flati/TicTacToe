@@ -37,7 +37,7 @@
   
 
   <Target Name="Compile" DependsOnTargets="Clean"><!--This will not run unless we have cleaned-->
-    <MSBuild Projects="$(ApplicationPath)\TicTacToe.csproj" />
+    <MSBuild Projects="$(ApplicationPath)\TicTacToeApplication.csproj" />
   </Target>
   
   <Target Name="Test">
