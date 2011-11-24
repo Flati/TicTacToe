@@ -2,52 +2,52 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Run">
 <UsingTask TaskName="NUnit" AssemblyFile="$(teamcity_dotnet_nunitlauncher_msbuild_task)"/>
 
-
+  <PropertyGroup>
+	<ApplicationPath>C:\Checkout\TicTacToe\TicTacToeApplication\TicTacToeApplication</ApplicationPath>
+	<TestPath>C:\Checkout\TicTacToe\TicTacToeApplication\Test</TestPath>
+  </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <Optimize>false</Optimize>
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>..\bin\Debug</OutputPath>
+    <OutputPath>$(ApplicationPath)\bin\Debug</OutputPath>
   </PropertyGroup>
   
  
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <Optimize>true</Optimize>
     <DebugSymbols>false</DebugSymbols>
-    <OutputPath>..\bin\Release</OutputPath>
+    <OutputPath>$(ApplicationPath)\bin\Release</OutputPath>
   </PropertyGroup>
   
 
   
   <Target Name="Clean"> <!--Clean the build directory for future build-->
     <ItemGroup> <!--All files in bin directory-->
-      <BinFiles Include="..\TicTacToe\TicTacToeApplication\TicTacToeApplication\bin\*.*" />
-      <PublishFiles Include="..\Published\*.*"/>
+      <BinFiles Include="$(ApplicationPath)\bin\*.*" />
+      <PublishFiles Include="$(ApplicationPath)\Published\*.*"/>
     </ItemGroup>
 	 <Message Text="Files to delete : @(BinFiles)" />
-    <Delete Files="@(BinFiles)" /> <!--Delete them!-->
-    <Delete Files="@(PublishFiles)"/>
-	<RemoveDir Directories="bin\"/>
-	<RemoveDir Directories="Published"/>
+    <Delete Files="$(BinFiles)" /> <!--Delete them!-->
+    <Delete Files="$(PublishFiles)"/>
+	<RemoveDir Directories="$(ApplicationPath)\bin\"/>
+	<RemoveDir Directories="$(ApplicationPath)\Published"/>
   </Target>
   
   
 
   <Target Name="Compile" DependsOnTargets="Clean"><!--This will not run unless we have cleaned-->
-    <MSBuild Projects="..\TicTacToe\TicTacToeApplication\TicTacToeApplication\TicTacToe.csproj" />
+    <MSBuild Projects="$(ApplicationPath)\TicTacToeApplication.csproj" />
   </Target>
   
-  <Target Name="Test">
-     <NUnit Assemblies="..\TicTacToe\TicTacToeApplication\Test\bin\Test.dll"/>
-  </Target>
 
   <Target Name="Publish">
     <ItemGroup>
-      <Executibles Include="..\TicTacToe\TicTacToeApplication\TicTacToeApplication\bin\Release\*.exe" />
-      <Binaries Include="..\TicTacToe\TicTacToeApplication\TicTacToeApplication\bin\Release\*.dll" />
+      <Executibles Include="$(ApplicationPath)\bin\Release\*.exe" />
+      <Binaries Include="$(ApplicationPath)\bin\Release\*.dll" />
     </ItemGroup>
-    <Copy SourceFiles ="@(Binaries)" DestinationFolder="Published" />
-    <Copy SourceFiles="@(Executibles)" DestinationFolder="Published" />
+    <Copy SourceFiles ="$(Binaries)" DestinationFolder="Published" />
+    <Copy SourceFiles="$(Executibles)" DestinationFolder="Published" />
   </Target>
   
   <Target Name="Message">
@@ -61,7 +61,6 @@
   <Target Name="Run">
     <CallTarget Targets="Clean"></CallTarget>
     <CallTarget Targets="Compile"></CallTarget>
-    <CallTarget Targets="Test"></CallTarget>
     <CallTarget Targets="Publish"></CallTarget>
 	<CallTarget Targets="Message"></CallTarget>
   </Target>
