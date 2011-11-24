@@ -10,6 +10,12 @@ namespace TicTacToeApplication.code
     {
         public string path = "ProgressLog.txt";
 
+        /*********************************************************************
+        * This is a constructor. It reads the ProgressLog and initializes the
+        * global variables for statistics.
+        * INPUT: none.
+        * OUTPUT: none.
+        *********************************************************************/
         public DataReader()
         {
             if (File.Exists(path))
@@ -29,6 +35,12 @@ namespace TicTacToeApplication.code
             }
         }
 
+        /*********************************************************************
+        * This is a function that changes the global variables for statistics
+        * according to the winner. It then writes the result into the "DataBase".
+        * INPUT: winner of type string.
+        * OUTPUT: none.
+        *********************************************************************/
         public void Winning(string winner)
         {
             Global.WINNER = winner;

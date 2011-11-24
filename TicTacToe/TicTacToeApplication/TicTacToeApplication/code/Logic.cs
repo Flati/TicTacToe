@@ -12,6 +12,12 @@ namespace TicTacToeApplication.code
         public DataReader dataReader;
         public int moveCounter;
 
+        /*********************************************************************
+        * This is a constructor. It initializes the matrix behind the
+        * tictactoe, the moveCounter, the dataReader and currentPlayer.
+        * INPUT: none.
+        * OUTPUT: none.
+        *********************************************************************/
         public Logic()
         {
             moveCounter = 0;
@@ -27,14 +33,25 @@ namespace TicTacToeApplication.code
                 }
             }
         }
-        #region palli
-		public void MarkMatrix(int x, int y)
+
+        /*********************************************************************
+        * This function marks the given spot in the matrix as taken.
+        * It uses the currentPlayer variable to mark it with the correct symbol.
+        * INPUT: x- and y-coordinates of type int.
+        * OUTPUT: none.
+        *********************************************************************/
+        public void MarkMatrix(int x, int y)
 		{
             matrix[x][y] = currentPlayer;
 			moveCounter++;
 		}
 
-		public bool Tie()
+        /*********************************************************************
+        * This function checks if the game has reached a tie.
+        * INPUT: none.
+        * OUTPUT: tie of type bool.
+        *********************************************************************/
+        public bool Tie()
 		{
             if (moveCounter > 8)
             {
@@ -43,12 +60,12 @@ namespace TicTacToeApplication.code
             }
             return false;
 		}
-        #endregion
 
-        #region flati
         /*********************************************************************
         * This function checks if the given index in the matrix is already
         * marked.
+        * INPUT: x- and y-coordinates of type int.
+        * OUTPUT: availability of type bool.
         *********************************************************************/
         public bool IsAvailable(int x, int y)
         {
@@ -56,9 +73,7 @@ namespace TicTacToeApplication.code
                 return true;
             return false;
         }
-        #endregion
 
-        #region hjalli
         /*********************************************************************
         * This function will change what player is active.
         * INPUT: none.
@@ -71,9 +86,12 @@ namespace TicTacToeApplication.code
             else
                 currentPlayer = Global.PLAYER1;
         }
-        #endregion
 
-        #region petur
+        /*********************************************************************
+        * This function checks if either player has reached a winning position.
+        * INPUT: none.
+        * OUTPUT: isWon of type bool.
+        *********************************************************************/
         public bool IsWon()
         {
             bool isWon = false;
@@ -106,9 +124,5 @@ namespace TicTacToeApplication.code
             }
             return isWon;
         }
-        #endregion
-
-        #region snorri
-        #endregion
     }
 }

@@ -12,6 +12,10 @@ namespace TicTacToeApplication
 {
     public partial class StatisticsForm : Form
     {
+        /*********************************************************************
+        * This is a constructor for the StatisticsForm. It initializes the
+        * statistics message and winner.
+        *********************************************************************/
         public StatisticsForm()
         {
             InitializeComponent();
@@ -25,12 +29,19 @@ namespace TicTacToeApplication
             StatisticsMessage.Refresh();
         }
 
+        /*********************************************************************
+        * This function closes the form and allows the project to open the
+        * game again from scratch.
+        *********************************************************************/
         private void YesButton_Click(object sender, EventArgs e)
         {
             Global.PLAY_AGAIN = true;
             Close();
         }
 
+        /*********************************************************************
+        * This function closes the form and exits the program.
+        *********************************************************************/
         private void NoButton_Click(object sender, EventArgs e)
         {
             Global.PLAY_AGAIN = false;
