@@ -26,8 +26,8 @@ namespace TicTacToeApplication
         {
             InitializeComponent();
             logic = new Logic();
-            cross = Image.FromFile("..\\..\\Images\\kross.png");
-            circle = Image.FromFile("..\\..\\Images\\hringur.png");
+            cross = Properties.Resources.kross;
+            circle = Properties.Resources.hringur;
         }
 
         /*********************************************************************
