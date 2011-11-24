@@ -171,6 +171,12 @@ namespace Test
 
             // 3. Assert:
             Assert.AreEqual(logic.currentPlayer, Global.PLAYER2);
+
+            // 4. Act Again:
+            logic.ChangePlayers();
+
+            // 5. Assert Again:
+            Assert.AreEqual(logic.currentPlayer, Global.PLAYER1);
         }
 
 
