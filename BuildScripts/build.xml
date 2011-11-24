@@ -1,26 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Run">
 
+
+	<!-- "MSBuild Community Tasks" is needed for the nunit task -->
+	<!-- get it at http://msbuildtasks.tigris.org/ -->
+	<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+
+
+	<!-- Paths used troughout the script. This needs to be changed if default is not used-->
   <PropertyGroup>
 	<ApplicationPath>C:\Checkout\TicTacToe\TicTacToeApplication\TicTacToeApplication</ApplicationPath>
 	<TestPath>C:\Checkout\TicTacToe\TicTacToeApplication\Test</TestPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
-    <Optimize>false</Optimize>
-    <DebugSymbols>true</DebugSymbols>
-    <OutputPath>$(ApplicationPath)\bin\Debug</OutputPath>
+	<NUnitPath>C:\Checkout\NUnit</NUnitPath> <!--Modified NUnit binary is included and should not be changed-->
+	<PublishPath>C:\Checkout\Published</PublishPath>
   </PropertyGroup>
   
- 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <Optimize>true</Optimize>
-    <DebugSymbols>false</DebugSymbols>
-    <OutputPath>$(ApplicationPath)\bin\Release</OutputPath>
-  </PropertyGroup>
-  
-
-  
+	<!-- Clean the build folder -->  
   <Target Name="Clean"> <!--Clean the build directory for future build-->
     <ItemGroup> <!--All files in bin directory-->
       <BinFiles Include="$(ApplicationPath)\bin\*.*" />
@@ -34,21 +29,14 @@
   </Target>
   
   
-
+	<!-- Compile the Project and the Test -->
   <Target Name="Compile" DependsOnTargets="Clean"><!--This will not run unless we have cleaned-->
     <MSBuild Projects="$(ApplicationPath)\TicTacToeApplication.csproj" />
 	<MSBuild Projects="$(TestPath)\Test.csproj" />
   </Target>
   
-
-  <Target Name="Publish">
-    <ItemGroup>
-      <Executibles Include="$(ApplicationPath)\bin\Release\*.exe" />
-      <Binaries Include="$(ApplicationPath)\bin\Release\*.dll" />
-    </ItemGroup>
-    <Copy SourceFiles ="$(Binaries)" DestinationFolder="Published" />
-    <Copy SourceFiles="$(Executibles)" DestinationFolder="Published" />
-  </Target>
+  
+  <!-- Message is displayed at the bottom of the log file -->
   
   <Target Name="Message">
         <Message Text="================================" />
@@ -57,11 +45,13 @@
 		<Message Text="=" />
 		<Message Text="=================================" />
     </Target>
+	
+	<!-- Target Run Sequence -->
   
   <Target Name="Run">
     <CallTarget Targets="Clean"></CallTarget>
     <CallTarget Targets="Compile"></CallTarget>
-    <CallTarget Targets="Publish"></CallTarget>
 	<CallTarget Targets="Message"></CallTarget>
   </Target>
+  
 </Project>
