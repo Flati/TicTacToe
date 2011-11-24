@@ -27,6 +27,14 @@ namespace Test
                     Assert.AreEqual(logic.matrix[i][j],"E");
                 }
             }
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Assert.AreNotEqual(logic.matrix[i][j], "Null");
+                }
+            }
+
         }
         #region palli
         #endregion
@@ -60,6 +68,8 @@ namespace Test
         #endregion
 
         #region petur
+
+
         #endregion
 
         #region snorri
