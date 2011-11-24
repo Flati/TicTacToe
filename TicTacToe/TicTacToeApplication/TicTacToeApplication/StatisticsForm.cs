@@ -15,14 +15,12 @@ namespace TicTacToeApplication
         public StatisticsForm()
         {
             InitializeComponent();
-            if (Global.WINNER == Global.PLAYER1)
-                WinnerMessage.Text = "Player 1 won this game!";
-            else if (Global.WINNER == Global.PLAYER2)
-                WinnerMessage.Text = "Player 2 won this game!";
-            else
+            if (Global.WINNER == "tie")
                 WinnerMessage.Text = "The game resulted in a tie.";
-            StatisticsMessage.Text = "History:\n\nPlayer 1: " + Global.PLAYER1WIN + " wins.\nPlayer 2: "
-                                   + Global.PLAYER2WIN + " wins.\nTies: " + Global.TIENUMBER + " games.";
+            else
+                WinnerMessage.Text = "Player " + Global.WINNER + " won this game!";
+            StatisticsMessage.Text = "History:\n\nPlayer X wins: " + Global.PLAYER1WIN + "\nPlayer O wins: "
+                                   + Global.PLAYER2WIN + "\nTied games: " + Global.TIENUMBER;
             WinnerMessage.Refresh();
             StatisticsMessage.Refresh();
         }
