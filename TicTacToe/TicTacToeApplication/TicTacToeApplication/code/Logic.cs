@@ -9,9 +9,13 @@ namespace TicTacToeApplication.code
     {
         public List<List<string>> matrix;
         public string currentPlayer;
+        public DataReader dataReader;
+        public int moveCounter;
 
         public Logic()
         {
+            moveCounter = 0;
+            dataReader = new DataReader();
             currentPlayer = Global.PLAYER1;
             matrix = new List<List<string>>();
             for (int i = 0; i < 3; i++)

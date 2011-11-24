@@ -32,6 +32,28 @@ namespace Test
         #endregion
 
         #region flati
+        [Test]
+        public void TestDataReader()
+        {
+            // 1. Arrange:
+            Logic logic = new Logic();
+            // 2. Act:
+
+            // 3. Assert:
+            Assert.IsNotNull(logic.dataReader);
+        }
+
+        [Test]
+        public void TestMoveCounter()
+        {
+            // 1. Arrange:
+            Logic logic = new Logic();
+            // 2. Act:
+
+            // 3. Assert:
+            Assert.IsNotNull(logic.moveCounter);
+            Assert.AreEqual(logic.moveCounter, 0);
+        }
         #endregion
 
         #region hjalli
