@@ -84,4 +84,11 @@
 	<CallTarget Targets="Test"></CallTarget>
   </Target>
   
+    <Target Name="Server">
+    <CallTarget Targets="Clean"></CallTarget>
+    <CallTarget Targets="Compile"></CallTarget>
+    <CallTarget Targets="CompileTest"></CallTarget>
+	<CallTarget Targets="Test"></CallTarget>
+  </Target>
+  
 </Project>
