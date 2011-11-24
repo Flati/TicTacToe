@@ -34,6 +34,23 @@
     <MSBuild Projects="$(ApplicationPath)\TicTacToeApplication.csproj" />
 	<MSBuild Projects="$(TestPath)\Test.csproj" />
   </Target>
+
+ 
+	<!-- Test the Project with NUnit --> 
+  <Target Name="Test">
+	<NUnit Assemblies="$(TestPath)\bin\Debug\Test.dll" ToolPath="$(NUnitPath)" DisableShadowCopy="true" /> 
+  </Target>
+  
+	<!-- Publish the project this is only run if its a Release -->
+  <Target Name="Publish">
+    <ItemGroup>
+      <Executibles Include="$(ApplicationPath)\bin\Release\*.exe" />
+      <Binaries Include="$(ApplicationPath)\bin\Release\*.dll" />
+    </ItemGroup>
+    <Copy SourceFiles ="$(Binaries)" DestinationFolder="${PublishPath}" />
+    <Copy SourceFiles="$(Executibles)" DestinationFolder="${PublishPath}" />
+  </Target>
+  
   
   
   <!-- Message is displayed at the bottom of the log file -->
@@ -51,6 +68,8 @@
   <Target Name="Run">
     <CallTarget Targets="Clean"></CallTarget>
     <CallTarget Targets="Compile"></CallTarget>
+    <CallTarget Targets="Test"></CallTarget>
+    <CallTarget Targets="Publish"></CallTarget>
 	<CallTarget Targets="Message"></CallTarget>
   </Target>
   
