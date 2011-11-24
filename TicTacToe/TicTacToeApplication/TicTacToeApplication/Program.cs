@@ -8,9 +8,10 @@ namespace TicTacToeApplication
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+        /*********************************************************************
+        * This is the main function of the application. It keeps running the
+        * game until the user doesn't want to play anymore.
+        *********************************************************************/
         [STAThread]
         static void Main()
         {

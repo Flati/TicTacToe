@@ -44,7 +44,6 @@ namespace Test
                 }
             }
         }
-        #region palli
 		[Test]
         /*********************************************************************
         * This test function test if the "matrix" is marked correctly when
@@ -122,9 +121,6 @@ namespace Test
 			Assert.IsTrue(logic.Tie() );
 		}
 
-        #endregion
-
-        #region flati
         [Test]
         /*********************************************************************
         * This function tests if the constructor initializes the dataReader
@@ -173,9 +169,6 @@ namespace Test
             Assert.IsFalse(logic.IsAvailable(1, 1));
             Assert.IsFalse(logic.IsAvailable(0, 0));
         }
-        #endregion
-
-        #region hjalli
         
         [Test]
         /*********************************************************************
@@ -215,12 +208,15 @@ namespace Test
             // 5. Assert Again:
             Assert.AreEqual(logic.currentPlayer, Global.PLAYER1);
         }
-        #endregion
 
-        #region petur
+        /*********************************************************************
+        * The below tests check every winning position possible.
+        * It also tests a few non-winning positions.
+        *********************************************************************/
+        #region TestIsWon
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * X X X
         * e e e
         * e e e
@@ -242,7 +238,7 @@ namespace Test
         
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * e e e
         * X X X
         * e e e
@@ -263,7 +259,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * e e e
         * e e e
         * X X X
@@ -285,7 +281,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * X e e
         * X e e
         * X e e
@@ -307,7 +303,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * e X e
         * e X e
         * e X e
@@ -329,7 +325,7 @@ namespace Test
         
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * e e X
         * e e X
         * e e X
@@ -350,7 +346,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * X e e
         * e X e
         * e e X
@@ -371,7 +367,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * e e X
         * e X e
         * X e e
@@ -393,7 +389,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * O O O
         * e e e
         * e e e
@@ -414,7 +410,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * e e e
         * O O O
         * e e e
@@ -435,7 +431,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * e e e
         * e e e
         * O O O
@@ -456,7 +452,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * O e e
         * O e e
         * O e e
@@ -477,7 +473,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * e O e
         * e O e
         * e O e
@@ -498,7 +494,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * e e O
         * e e O
         * e e O
@@ -519,7 +515,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * O e e
         * e O e
         * e e O
@@ -540,7 +536,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * e e O
         * e O e
         * O e e
@@ -561,7 +557,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns false if:
+        * Test if IsWon function returns false if:
         * X O X
         * X O X     
         * O X O     
@@ -588,7 +584,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function false true if:
+        * Test if IsWon function false true if:
         * O X O
         * O X X     
         * X O X     
@@ -615,7 +611,7 @@ namespace Test
 
         [Test]
         /*********************************************************************
-        * Test if isWon function returns true if:
+        * Test if IsWon function returns true if:
         * O O X
         * X O X     
         * X X O     
@@ -639,11 +635,6 @@ namespace Test
             // 3. Assert:
             Assert.IsTrue(logic.IsWon());
         }
-
-
-        #endregion
-
-        #region snorri
         #endregion
     }
 }
