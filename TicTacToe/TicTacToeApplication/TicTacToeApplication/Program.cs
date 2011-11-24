@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using TicTacToeApplication.code;
 
 namespace TicTacToeApplication
 {
@@ -15,7 +16,11 @@ namespace TicTacToeApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            while (Global.PLAY_AGAIN)
+            {
+                Application.Run(new Form1());
+                Application.Run(new StatisticsForm());
+            }
         }
     }
 }

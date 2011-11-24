@@ -31,6 +31,7 @@ namespace TicTacToeApplication.code
 
         public void Winning(string winner)
         {
+            Global.WINNER = winner;
             if (winner == Global.PLAYER1)
                 Global.PLAYER1WIN++;
             else if (winner == Global.PLAYER2)
