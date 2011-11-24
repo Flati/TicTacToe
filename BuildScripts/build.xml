@@ -61,7 +61,6 @@
   <Target Name="Run">
     <CallTarget Targets="Clean"></CallTarget>
     <CallTarget Targets="Compile"></CallTarget>
-    <CallTarget Targets="Test"></CallTarget>
     <CallTarget Targets="Publish"></CallTarget>
 	<CallTarget Targets="Message"></CallTarget>
   </Target>
