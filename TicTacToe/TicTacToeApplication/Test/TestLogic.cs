@@ -232,16 +232,17 @@ namespace Test
             logic.matrix[0][2] = "X";
            
             // 3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
+        
+        [Test]
         /*********************************************************************
         * Test if IsWon function returns true if:
         * e e e
         * X X X
         * e e e
         *********************************************************************/
-        [Test]
         public void TestIsWonInMidHorizonalPositionForX()
         {
             // 1. Arrange:
@@ -253,7 +254,7 @@ namespace Test
             logic.matrix[1][2] = "X";
             
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
         [Test]
@@ -274,7 +275,7 @@ namespace Test
             logic.matrix[2][2] = "X";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
 
@@ -296,7 +297,7 @@ namespace Test
             logic.matrix[2][0] = "X";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
 
@@ -318,7 +319,7 @@ namespace Test
             logic.matrix[1][2] = "X";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
         
@@ -340,7 +341,7 @@ namespace Test
             logic.matrix[2][2] = "X";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
         [Test]
@@ -361,7 +362,7 @@ namespace Test
             logic.matrix[2][2] = "X";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
         [Test]
@@ -382,7 +383,7 @@ namespace Test
             logic.matrix[0][0] = "X";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
 
@@ -404,7 +405,7 @@ namespace Test
             logic.matrix[0][2] = "O";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
         [Test]
@@ -425,7 +426,7 @@ namespace Test
             logic.matrix[1][2] = "O";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
         [Test]
@@ -446,7 +447,7 @@ namespace Test
             logic.matrix[2][2] = "O";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
         [Test]
@@ -467,7 +468,7 @@ namespace Test
             logic.matrix[2][0] = "O";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
         [Test]
@@ -488,7 +489,7 @@ namespace Test
             logic.matrix[1][2] = "O";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
         [Test]
@@ -509,7 +510,7 @@ namespace Test
             logic.matrix[2][2] = "O";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
         [Test]
@@ -530,7 +531,7 @@ namespace Test
             logic.matrix[2][2] = "O";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
         [Test]
@@ -551,7 +552,7 @@ namespace Test
             logic.matrix[0][0] = "O";
 
             //3. Assert:
-            Assert.AreEqual(logic.IsWon(), true);
+            Assert.IsTrue(logic.IsWon());
         }
 
         [Test]
@@ -578,10 +579,10 @@ namespace Test
             logic.matrix[2][2] = "O";
 
             // 3. Assert:
-            Assert.AreEqual(logic.IsWon(), false);
+            Assert.IsFalse(logic.IsWon());
         }
 
-
+        [Test]
         /*********************************************************************
         * Test if IsWon function false true if:
         * O X O
@@ -605,9 +606,10 @@ namespace Test
             logic.matrix[2][2] = "X";
 
             // 3. Assert:
-            Assert.AreEqual(logic.IsWon(), false);
+            Assert.IsFalse(logic.IsWon());
         }
 
+        [Test]
         /*********************************************************************
         * Test if IsWon function returns true if:
         * O O X
@@ -631,7 +633,7 @@ namespace Test
             logic.matrix[2][2] = "O";
 
             // 3. Assert:
-            Assert.AreEqual(logic.IsWon(), false);
+            Assert.IsTrue(logic.IsWon());
         }
         #endregion
     }
