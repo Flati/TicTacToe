@@ -48,6 +48,15 @@ namespace TicTacToeApplication.code
         #endregion
 
         #region hjalli
+
+        public void ChangePlayers()
+        {
+            if (currentPlayer == Global.PLAYER1)
+                currentPlayer = Global.PLAYER2;
+            else
+                currentPlayer = Global.PLAYER1;
+        }
+
         #endregion
 
         #region petur
