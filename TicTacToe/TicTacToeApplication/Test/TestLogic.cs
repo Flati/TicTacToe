@@ -135,6 +135,12 @@ namespace Test
 
         #region petur
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * X X X
+        * e e e
+        * e e e
+        *********************************************************************/
         public void TestIsWonInTopHorizonalPositionForX()
         {
             // 1. Arrange:
@@ -150,6 +156,12 @@ namespace Test
             Assert.AreEqual(logic.isWon(), true);
         }
 
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * e e e
+        * X X X
+        * e e e
+        *********************************************************************/
         [Test]
         public void TestIsWonInMidHorizonalPositionForX()
         {
@@ -168,6 +180,12 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * e e e
+        * e e e
+        * X X X
+        *********************************************************************/
         public void TestIsWonInBottomHorizonalPositionForX()
         {
             // 1. Arrange:
@@ -183,7 +201,14 @@ namespace Test
             Assert.AreEqual(logic.isWon(), true);
         }
 
+
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * X e e
+        * X e e
+        * X e e
+        *********************************************************************/
         public void TestIsWonInLeftVerticalPositionForX()
         {
             // 1. Arrange:
@@ -199,7 +224,14 @@ namespace Test
             Assert.AreEqual(logic.isWon(), true);
         }
 
+
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * e X e
+        * e X e
+        * e X e
+        *********************************************************************/
         public void TestIsWonInMidVerticalPositionForX()
         {
             // 1. Arrange:
@@ -215,7 +247,14 @@ namespace Test
             Assert.AreEqual(logic.isWon(), true);
         }
 
+        
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * e e X
+        * e e X
+        * e e X
+        *********************************************************************/
         public void TestIsWonInRightVerticalPositionForX()
         {
             // 1. Arrange:
@@ -232,6 +271,12 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * X e e
+        * e X e
+        * e e X
+        *********************************************************************/
         public void TestIsWonInDiagonalPositionForXTopLeftToBottomRight()
         {
             // 1. Arrange:
@@ -248,6 +293,12 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * e e X
+        * e X e
+        * X e e
+        *********************************************************************/
         public void TestIsWonInDiagonalPositionForXBottomLeftToTopRight()
         {
             // 1. Arrange:
@@ -263,7 +314,14 @@ namespace Test
             Assert.AreEqual(logic.isWon(), true);
         }
 
+
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * O O O
+        * e e e
+        * e e e
+        *********************************************************************/
         public void TestIsWonInTopHorizonalPositionForO()
         {
             // 1. Arrange:
@@ -282,6 +340,12 @@ namespace Test
 
 
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * e e e
+        * O O O
+        * e e e
+        *********************************************************************/
         public void TestIsWonInMidHorizonalPositionForO()
         {
             // 1. Arrange:
@@ -299,6 +363,12 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * e e e
+        * e e e
+        * O O O
+        *********************************************************************/
         public void TestIsWonInBottomHorizonalPositionForO()
         {
             // 1. Arrange:
@@ -315,6 +385,12 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * O e e
+        * O e e
+        * O e e
+        *********************************************************************/
         public void TestIsWonInLeftVerticalPositionForO()
         {
             // 1. Arrange:
@@ -331,6 +407,12 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * e O e
+        * e O e
+        * e O e
+        *********************************************************************/
         public void TestIsWonInMidVerticalPositionForO()
         {
             // 1. Arrange:
@@ -347,6 +429,12 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * e e O
+        * e e O
+        * e e O
+        *********************************************************************/
         public void TestIsWonInRightVerticalPositionForO()
         {
             // 1. Arrange:
@@ -363,6 +451,12 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * O e e
+        * e O e
+        * e e O
+        *********************************************************************/
         public void TestIsWonInDiagonalPositionForOTopLeftToBottomRight()
         {
             // 1. Arrange:
@@ -379,6 +473,12 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * e e O
+        * e O e
+        * O e e
+        *********************************************************************/
         public void TestIsWonInDiagonalPositionForOBottomLeftToTopRight()
         {
             // 1. Arrange:
@@ -395,10 +495,88 @@ namespace Test
         }
 
         [Test]
-        public void TestIsWonForTenRandomGamesWhereThereIsATie()
+        /*********************************************************************
+        * Test if isWon function returns false if:
+        * X O X
+        * X O X     
+        * O X O     
+        *********************************************************************/
+        public void TestIsWonForRandomGameWhereThereIsATie()
         {
-            
+            // 1. Arrange:
+            Logic logic = new Logic();
+
+            // 2. Act:
+            logic.matrix[0][0] = "X";
+            logic.matrix[0][1] = "O";
+            logic.matrix[0][2] = "X";
+            logic.matrix[1][0] = "X";
+            logic.matrix[1][1] = "O";
+            logic.matrix[1][2] = "X";
+            logic.matrix[2][0] = "O";
+            logic.matrix[2][1] = "X";
+            logic.matrix[2][2] = "O";
+            logic.isWon();
+
+            // 3. Assert:
+            Assert.AreEqual(logic.isWon(), false);
         }
+
+
+        /*********************************************************************
+        * Test if isWon function false true if:
+        * O X O
+        * O X X     
+        * X O X     
+        *********************************************************************/
+        public void TestIsWonForRandomGame2WhereThereIsATie()
+        {
+            // 1. Arrange:
+            Logic logic = new Logic();
+
+            // 2. Act:
+            logic.matrix[0][0] = "O";
+            logic.matrix[0][1] = "X";
+            logic.matrix[0][2] = "O";
+            logic.matrix[1][0] = "O";
+            logic.matrix[1][1] = "X";
+            logic.matrix[1][2] = "O";
+            logic.matrix[2][0] = "X";
+            logic.matrix[2][1] = "O";
+            logic.matrix[2][2] = "X";
+            logic.isWon();
+
+            // 3. Assert:
+            Assert.AreEqual(logic.isWon(), false);
+        }
+
+        /*********************************************************************
+        * Test if isWon function returns true if:
+        * O O X
+        * X O X     
+        * X X O     
+        *********************************************************************/
+        public void TestIsWonForRandomGame3WhereThereIsATie()
+        {
+            // 1. Arrange:
+            Logic logic = new Logic();
+
+            // 2. Act:
+            logic.matrix[0][0] = "O";
+            logic.matrix[0][1] = "O";
+            logic.matrix[0][2] = "X";
+            logic.matrix[1][0] = "X";
+            logic.matrix[1][1] = "O";
+            logic.matrix[1][2] = "X";
+            logic.matrix[2][0] = "X";
+            logic.matrix[2][1] = "X";
+            logic.matrix[2][2] = "O";
+            logic.isWon();
+
+            // 3. Assert:
+            Assert.AreEqual(logic.isWon(), false);
+        }
+
 
         #endregion
 
