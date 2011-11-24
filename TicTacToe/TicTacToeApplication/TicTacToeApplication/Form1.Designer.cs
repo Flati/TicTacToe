@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.TopLeft = new System.Windows.Forms.Button();
+            this.BottomCenter = new System.Windows.Forms.Button();
+            this.MiddleRight = new System.Windows.Forms.Button();
+            this.MiddleCenter = new System.Windows.Forms.Button();
+            this.BottomRight = new System.Windows.Forms.Button();
+            this.BottomLeft = new System.Windows.Forms.Button();
+            this.MiddleLeft = new System.Windows.Forms.Button();
+            this.TopCenter = new System.Windows.Forms.Button();
+            this.TopRight = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,101 +51,101 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // button2
+            // TopLeft
             // 
-            this.button2.Location = new System.Drawing.Point(0, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 145);
-            this.button2.TabIndex = 2;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.TopLeft.Location = new System.Drawing.Point(0, 0);
+            this.TopLeft.Name = "TopLeft";
+            this.TopLeft.Size = new System.Drawing.Size(145, 145);
+            this.TopLeft.TabIndex = 2;
+            this.TopLeft.UseVisualStyleBackColor = true;
+            this.TopLeft.Click += new System.EventHandler(this.TopLeft_Click);
             // 
-            // button1
+            // BottomCenter
             // 
-            this.button1.Location = new System.Drawing.Point(153, 305);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(145, 145);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.BottomCenter.Location = new System.Drawing.Point(153, 305);
+            this.BottomCenter.Name = "BottomCenter";
+            this.BottomCenter.Size = new System.Drawing.Size(145, 145);
+            this.BottomCenter.TabIndex = 3;
+            this.BottomCenter.UseVisualStyleBackColor = true;
+            this.BottomCenter.Click += new System.EventHandler(this.BottomCenter_Click);
             // 
-            // button3
+            // MiddleRight
             // 
-            this.button3.Location = new System.Drawing.Point(303, 153);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(145, 145);
-            this.button3.TabIndex = 4;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.MiddleRight.Location = new System.Drawing.Point(303, 153);
+            this.MiddleRight.Name = "MiddleRight";
+            this.MiddleRight.Size = new System.Drawing.Size(145, 145);
+            this.MiddleRight.TabIndex = 4;
+            this.MiddleRight.UseVisualStyleBackColor = true;
+            this.MiddleRight.Click += new System.EventHandler(this.MiddleRight_Click);
             // 
-            // button4
+            // MiddleCenter
             // 
-            this.button4.Location = new System.Drawing.Point(152, 153);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(145, 145);
-            this.button4.TabIndex = 5;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.MiddleCenter.Location = new System.Drawing.Point(152, 153);
+            this.MiddleCenter.Name = "MiddleCenter";
+            this.MiddleCenter.Size = new System.Drawing.Size(145, 145);
+            this.MiddleCenter.TabIndex = 5;
+            this.MiddleCenter.UseVisualStyleBackColor = true;
+            this.MiddleCenter.Click += new System.EventHandler(this.MiddleCenter_Click);
             // 
-            // button5
+            // BottomRight
             // 
-            this.button5.Location = new System.Drawing.Point(303, 304);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(145, 145);
-            this.button5.TabIndex = 6;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.BottomRight.Location = new System.Drawing.Point(303, 304);
+            this.BottomRight.Name = "BottomRight";
+            this.BottomRight.Size = new System.Drawing.Size(145, 145);
+            this.BottomRight.TabIndex = 6;
+            this.BottomRight.UseVisualStyleBackColor = true;
+            this.BottomRight.Click += new System.EventHandler(this.BottomRight_Click);
             // 
-            // button6
+            // BottomLeft
             // 
-            this.button6.Location = new System.Drawing.Point(2, 305);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(145, 145);
-            this.button6.TabIndex = 7;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.BottomLeft.Location = new System.Drawing.Point(2, 305);
+            this.BottomLeft.Name = "BottomLeft";
+            this.BottomLeft.Size = new System.Drawing.Size(145, 145);
+            this.BottomLeft.TabIndex = 7;
+            this.BottomLeft.UseVisualStyleBackColor = true;
+            this.BottomLeft.Click += new System.EventHandler(this.BottomLeft_Click);
             // 
-            // button7
+            // MiddleLeft
             // 
-            this.button7.Location = new System.Drawing.Point(2, 153);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(145, 145);
-            this.button7.TabIndex = 8;
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.MiddleLeft.Location = new System.Drawing.Point(2, 153);
+            this.MiddleLeft.Name = "MiddleLeft";
+            this.MiddleLeft.Size = new System.Drawing.Size(145, 145);
+            this.MiddleLeft.TabIndex = 8;
+            this.MiddleLeft.UseVisualStyleBackColor = true;
+            this.MiddleLeft.Click += new System.EventHandler(this.MiddleLeft_Click);
             // 
-            // button8
+            // TopCenter
             // 
-            this.button8.Location = new System.Drawing.Point(151, 0);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(145, 145);
-            this.button8.TabIndex = 9;
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.TopCenter.Location = new System.Drawing.Point(151, 0);
+            this.TopCenter.Name = "TopCenter";
+            this.TopCenter.Size = new System.Drawing.Size(145, 145);
+            this.TopCenter.TabIndex = 9;
+            this.TopCenter.UseVisualStyleBackColor = true;
+            this.TopCenter.Click += new System.EventHandler(this.TopCenter_Click);
             // 
-            // button9
+            // TopRight
             // 
-            this.button9.Location = new System.Drawing.Point(302, 0);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(145, 145);
-            this.button9.TabIndex = 10;
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.TopRight.Location = new System.Drawing.Point(302, 0);
+            this.TopRight.Name = "TopRight";
+            this.TopRight.Size = new System.Drawing.Size(145, 145);
+            this.TopRight.TabIndex = 10;
+            this.TopRight.UseVisualStyleBackColor = true;
+            this.TopRight.Click += new System.EventHandler(this.TopRight_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 450);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.TopRight);
+            this.Controls.Add(this.TopCenter);
+            this.Controls.Add(this.MiddleLeft);
+            this.Controls.Add(this.BottomLeft);
+            this.Controls.Add(this.BottomRight);
+            this.Controls.Add(this.MiddleCenter);
+            this.Controls.Add(this.MiddleRight);
+            this.Controls.Add(this.BottomCenter);
+            this.Controls.Add(this.TopLeft);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -159,15 +159,15 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button TopLeft;
+        private System.Windows.Forms.Button BottomCenter;
+        private System.Windows.Forms.Button MiddleRight;
+        private System.Windows.Forms.Button MiddleCenter;
+        private System.Windows.Forms.Button BottomRight;
+        private System.Windows.Forms.Button BottomLeft;
+        private System.Windows.Forms.Button MiddleLeft;
+        private System.Windows.Forms.Button TopCenter;
+        private System.Windows.Forms.Button TopRight;
     }
 }
 

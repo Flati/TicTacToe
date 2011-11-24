@@ -30,21 +30,23 @@ namespace TicTacToeApplication.code
         #region palli
 		public void MarkMatrix(int x, int y)
 		{
-			if (currentPlayer.Equals(Global.PLAYER1))
-			{
-				matrix[x][y] = "X";
-				currentPlayer = Global.PLAYER2;
-			}
-			else
-			{
-				matrix[x][y] = "O";
-				currentPlayer = Global.PLAYER1;
-			}
+            matrix[x][y] = currentPlayer;
 			moveCounter++;
+		}
+
+		public bool Tie()
+		{
+			return moveCounter > 8;
 		}
         #endregion
 
         #region flati
+        public bool IsAvailable(int x, int y)
+        {
+            if (matrix[x][y] == "E")
+                return true;
+            return false;
+        }
         #endregion
 
         #region hjalli
@@ -64,7 +66,7 @@ namespace TicTacToeApplication.code
         #endregion
 
         #region petur
-        public bool isWon()
+        public bool IsWon()
         {
             for (int i = 0; i < 3; i++)
             {

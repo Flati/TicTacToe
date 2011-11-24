@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Run">
+
+
+	<!-- "MSBuild Community Tasks" is needed for the nunit task -->
+	<!-- get it at http://msbuildtasks.tigris.org/ -->
+	<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+
+
+	<!-- Paths used troughout the script. This needs to be changed if default is not used-->
+  <PropertyGroup>
+	<ApplicationPath>C:\Checkout\TicTacToe\TicTacToeApplication\TicTacToeApplication</ApplicationPath>
+	<TestPath>C:\Checkout\TicTacToe\TicTacToeApplication\Test</TestPath>
+	<NUnitPath>C:\Checkout\NUnit</NUnitPath> <!--Modified NUnit binary is included and should not be changed-->
+	<PublishPath>C:\Checkout\Published</PublishPath>
+  </PropertyGroup>
+  
+	<!-- Clean the build folder -->  
+  <Target Name="Clean"> <!--Clean the build directory for future build-->
+    <ItemGroup> <!--All files in bin directory-->
+      <BinFiles Include="$(ApplicationPath)\bin\*.*" />
+      <PublishFiles Include="$(ApplicationPath)\Published\*.*"/>
+    </ItemGroup>
+	 <Message Text="Files to delete : @(BinFiles)" />
+    <Delete Files="$(BinFiles)" /> <!--Delete them!-->
+    <Delete Files="$(PublishFiles)"/>
+	<RemoveDir Directories="$(ApplicationPath)\bin\"/>
+	<RemoveDir Directories="$(ApplicationPath)\Published"/>
+  </Target>
+  
+  
+	<!-- Compile the Project and the Test -->
+  <Target Name="Compile" DependsOnTargets="Clean"><!--This will not run unless we have cleaned-->
+    <MSBuild Projects="$(ApplicationPath)\TicTacToeApplication.csproj" />
+	<MSBuild Projects="$(TestPath)\Test.csproj" />
+  </Target>
+
+ 
+	<!-- Test the Project with NUnit --> 
+  <Target Name="Test">
+	<NUnit Assemblies="$(TestPath)\bin\Debug\Test.dll" ToolPath="$(NUnitPath)" DisableShadowCopy="true" /> 
+  </Target>
+  
+	<!-- Publish the project this is only run if its a Release -->
+  <Target Name="Publish">
+    <ItemGroup>
+      <Executibles Include="$(ApplicationPath)\bin\Release\*.exe" />
+      <Binaries Include="$(ApplicationPath)\bin\Release\*.dll" />
+    </ItemGroup>
+    <Copy SourceFiles ="$(Binaries)" DestinationFolder="${PublishPath}" />
+    <Copy SourceFiles="$(Executibles)" DestinationFolder="${PublishPath}" />
+  </Target>
+  
+  
+  
+  <!-- Message is displayed at the bottom of the log file -->
+  
+  <Target Name="Message">
+        <Message Text="================================" />
+		<Message Text="=" />
+		<Message Text="= ÞETTA TÓKST" />
+		<Message Text="=" />
+		<Message Text="=================================" />
+    </Target>
+	
+	<!-- Target Run Sequence -->
+  
+  <Target Name="Run">
+    <CallTarget Targets="Clean"></CallTarget>
+    <CallTarget Targets="Compile"></CallTarget>
+    <CallTarget Targets="Test"></CallTarget>
+    <CallTarget Targets="Publish"></CallTarget>
+	<CallTarget Targets="Message"></CallTarget>
+  </Target>
+  
+</Project>
