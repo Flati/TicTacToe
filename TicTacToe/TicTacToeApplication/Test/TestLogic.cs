@@ -29,6 +29,34 @@ namespace Test
             }
         }
         #region palli
+		[Test]
+		public void TestMarkMatrix()
+		{
+			// 1. Arrange:
+			Logic logic = new Logic();
+			int x1 = 1, y1 = 2;
+			int x2 = 2, y2 = 1;
+
+			// 2. Act:
+			logic.MarkMatrix(x1, y1);
+			logic.MarkMatrix(x2, y2);
+
+			// 3. Assert:
+			Assert.AreEqual(logic.matrix[x1][y1], "X");
+			Assert.AreEqual(logic.matrix[x2][y2], "O");
+			Assert.AreEqual(logic.moveCounter, 2);
+			for (int i = 0; i < 3; i++)
+			{
+				for (int j = 0; j < 3; j++)
+				{
+					if(i != x1 || i != x2 || j != y1 || j != y2)
+					{
+						Assert.AreEqual(logic.matrix[i][j], "E");
+					}
+				}
+			}
+
+		}
         #endregion
 
         #region flati

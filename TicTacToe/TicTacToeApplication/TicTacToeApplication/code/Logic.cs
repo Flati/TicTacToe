@@ -28,6 +28,10 @@ namespace TicTacToeApplication.code
             }
         }
         #region palli
+		public void MarkMatrix(int x, int y)
+		{
+
+		}
         #endregion
 
         #region flati
