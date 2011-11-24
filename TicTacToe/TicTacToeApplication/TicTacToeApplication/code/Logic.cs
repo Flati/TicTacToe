@@ -53,7 +53,11 @@ namespace TicTacToeApplication.code
         #endregion
 
         #region hjalli
-
+        /*********************************************************************
+        * This function will change what player is active.
+        * INPUT: none.
+        * OUTPUT: none.
+        *********************************************************************/
         public void ChangePlayers()
         {
             if (currentPlayer == Global.PLAYER1)
@@ -65,6 +69,33 @@ namespace TicTacToeApplication.code
         #endregion
 
         #region petur
+        public bool isWon()
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if (matrix[i][0] == matrix[i][1] && matrix[i][0] == matrix[i][2])
+                {
+                    if (matrix[i][0] != "E")
+                        return true;
+                }
+                else if (matrix[0][i] == matrix[1][i] && matrix[0][i] == matrix[2][i])
+                {
+                    if (matrix[0][i] != "E")
+                        return true;
+                }
+            }
+            if (matrix[0][0] == matrix[1][1] && matrix[0][0] == matrix[2][2])
+            {
+                if (matrix[0][0] != "E")
+                    return true;
+            }
+            else if (matrix[2][0] == matrix[1][1] && matrix[2][0] == matrix[0][2])
+            {
+                if (matrix[1][1] != "E")
+                    return true;
+            }
+            return false;
+        }
         #endregion
 
         #region snorri
