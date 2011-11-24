@@ -9,9 +9,17 @@ using TicTacToeApplication.code;
 namespace Test
 {
     [TestFixture]
+    /*********************************************************************
+    * This is the test class for the "Logic class". It runs the 
+    * necessary test for each component. 
+    *********************************************************************/
     public class TestLogic
     {
         [Test]
+        /*********************************************************************
+        * This is the test class for the "Logic class". It runs the 
+        * necessary test for each component. 
+        *********************************************************************/
         public void TestMatrix()
         {
             // 1. Arrange:
@@ -38,36 +46,65 @@ namespace Test
         }
         #region palli
 		[Test]
-		public void TestMarkMatrix()
+        /*********************************************************************
+        * This test function test if the "matrix" is marked correctly when
+        * initialized.
+        *********************************************************************/
+		public void TestInitializedMatrix()
 		{
 			// 1. Arrange:
 			Logic logic = new Logic();
-			int x1 = 1, y1 = 2;
-			int x2 = 2, y2 = 1;
 
 			// 2. Act:
-			logic.MarkMatrix(x1, y1);
-            logic.currentPlayer = Global.PLAYER2;
-			logic.MarkMatrix(x2, y2);
 
 			// 3. Assert:
-			Assert.AreEqual(logic.matrix[x1][y1], "X");
-			Assert.AreEqual(logic.matrix[x2][y2], "O");
-			Assert.AreEqual(logic.moveCounter, 2);
 			for (int i = 0; i < 3; i++)
 			{
 				for (int j = 0; j < 3; j++)
 				{
-					if( !( i == x1 || i == x2 || j == y1 || j == y2) )
-					{
-						Assert.AreEqual(logic.matrix[i][j], "E");
-					}
+					Assert.AreEqual(logic.matrix[i][j], "E");
 				}
 			}
-
 		}
 
+        [Test]
+        /*********************************************************************
+        * This tests the "MarkMatrix" function and checks if it marks
+        * the correct fields and no other.
+        *********************************************************************/
+        public void TestMarkMatrix()
+        {
+            // 1. Arrange:
+            Logic logic = new Logic();
+            int x1 = 1, y1 = 2;
+            int x2 = 2, y2 = 1;
+
+            // 2. Act:
+            logic.MarkMatrix(x1, y1);
+            logic.currentPlayer = Global.PLAYER2;
+            logic.MarkMatrix(x2, y2);
+
+            // 3. Assert:
+            Assert.AreEqual(logic.matrix[x1][y1], "X");
+            Assert.AreEqual(logic.matrix[x2][y2], "O");
+            Assert.AreEqual(logic.moveCounter, 2);
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (!(x1 == i && y1 == j || x2 == i && y2 == j))
+                    {
+                        Assert.AreEqual(logic.matrix[i][j], "E");
+                    }
+                }
+            }
+
+        }
+
 		[Test]
+        /*********************************************************************
+        * This test checks if the Tie function returns the right value.
+        *********************************************************************/
 		public void TestTie()
 		{
 			// 1. Arrange:
@@ -178,24 +215,6 @@ namespace Test
             // 5. Assert Again:
             Assert.AreEqual(logic.currentPlayer, Global.PLAYER1);
         }
-
-        [Test]
-        /*********************************************************************
-        * This function will test the "WinSreen" function and see if it
-        * displays the correct winner.
-        *********************************************************************/
-        public void TestWinSreen()
-        {
-            // 1. Arrange:
-            String winner = "X";
-
-            // 2. Act:
-            DataReader dataReader = new DataReader();
-
-            // 3. Assert:
-            Assert.AreEqual(Global.winMessage, dataReader.winning());
-        }
-
         #endregion
 
         #region petur
