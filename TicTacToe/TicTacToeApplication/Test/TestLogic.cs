@@ -47,6 +47,7 @@ namespace Test
 
 			// 2. Act:
 			logic.MarkMatrix(x1, y1);
+            logic.currentPlayer = Global.PLAYER2;
 			logic.MarkMatrix(x2, y2);
 
 			// 3. Assert:
