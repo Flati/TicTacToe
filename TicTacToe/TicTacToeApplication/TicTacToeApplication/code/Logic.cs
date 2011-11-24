@@ -48,7 +48,11 @@ namespace TicTacToeApplication.code
         #endregion
 
         #region hjalli
-
+        /*********************************************************************
+        * This function will change what player is active.
+        * INPUT: none.
+        * OUTPUT: none.
+        *********************************************************************/
         public void ChangePlayers()
         {
             if (currentPlayer == Global.PLAYER1)

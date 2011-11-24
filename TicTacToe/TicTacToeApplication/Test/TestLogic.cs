@@ -90,6 +90,10 @@ namespace Test
         #region hjalli
         
         [Test]
+        /*********************************************************************
+        * This function will test if the current player is player number 1
+        * after you initialize the "Logic" class.
+        *********************************************************************/
         public void TestCurrentPlayer()
         {
             // 1. Arrange:
@@ -97,12 +101,15 @@ namespace Test
 
             // 2. Act:
 
-
             // 3. Assert:
             Assert.AreEqual(logic.currentPlayer, Global.PLAYER1);
         }
 
         [Test]
+        /*********************************************************************
+        * This function will test the "ChangePlayers" function and see
+        * if you have the other player after running it.
+        *********************************************************************/
         public void TestChangePlayer()
         {
             // 1. Arrange:
@@ -114,6 +121,8 @@ namespace Test
             // 3. Assert:
             Assert.AreEqual(logic.currentPlayer, Global.PLAYER2);
         }
+
+
 
         #endregion
 
