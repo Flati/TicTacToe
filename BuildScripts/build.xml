@@ -7,22 +7,22 @@
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <Optimize>false</Optimize>
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>.\bin\Debug</OutputPath>
+    <OutputPath>..\bin\Debug</OutputPath>
   </PropertyGroup>
   
  
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <Optimize>true</Optimize>
     <DebugSymbols>false</DebugSymbols>
-    <OutputPath>.\bin\Release</OutputPath>
+    <OutputPath>\..\bin\Release</OutputPath>
   </PropertyGroup>
   
 
   
   <Target Name="Clean"> <!--Clean the build directory for future build-->
     <ItemGroup> <!--All files in bin directory-->
-      <BinFiles Include="bin\*.*" />
-      <PublishFiles Include="Published\*.*"/>
+      <BinFiles Include="\..\TicTacToe\TicTacToeApplication\TicTacToeApplication\bin\*.*" />
+      <PublishFiles Include="\..\Published\*.*"/>
     </ItemGroup>
 	 <Message Text="Files to delete : @(BinFiles)" />
     <Delete Files="@(BinFiles)" /> <!--Delete them!-->
@@ -34,17 +34,17 @@
   
 
   <Target Name="Compile" DependsOnTargets="Clean"><!--This will not run unless we have cleaned-->
-    <MSBuild Projects="TicTacToe.csproj" />
+    <MSBuild Projects="\..\TicTacToe\TicTacToeApplication\TicTacToeApplication\TicTacToe.csproj" />
   </Target>
   
   <Target Name="Test">
-     <NUnit Assemblies="bin\Test.dll"/>
+     <NUnit Assemblies="\..\TicTacToe\TicTacToeApplication\Test\bin\Test.dll"/>
   </Target>
 
   <Target Name="Publish">
     <ItemGroup>
-      <Executibles Include="bin\Release\*.exe" />
-      <Binaries Include="bin\Release\*.dll" />
+      <Executibles Include="\..\TicTacToe\TicTacToeApplication\TicTacToeApplication\bin\Release\*.exe" />
+      <Binaries Include="\..\TicTacToe\TicTacToeApplication\TicTacToeApplication\bin\Release\*.dll" />
     </ItemGroup>
     <Copy SourceFiles ="@(Binaries)" DestinationFolder="Published" />
     <Copy SourceFiles="@(Executibles)" DestinationFolder="Published" />
