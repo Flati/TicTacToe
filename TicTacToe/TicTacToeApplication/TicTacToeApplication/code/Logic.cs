@@ -41,6 +41,10 @@ namespace TicTacToeApplication.code
         #endregion
 
         #region flati
+        /*********************************************************************
+        * This function checks if the given index in the matrix is already
+        * marked.
+        *********************************************************************/
         public bool IsAvailable(int x, int y)
         {
             if (matrix[x][y] == "E")

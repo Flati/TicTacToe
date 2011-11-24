@@ -89,6 +89,10 @@ namespace Test
 
         #region flati
         [Test]
+        /*********************************************************************
+        * This function tests if the constructor initializes the dataReader
+        * variable.
+        *********************************************************************/
         public void TestDataReader()
         {
             // 1. Arrange:
@@ -100,6 +104,10 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * This function tests if the constructor initializes the moveCounter
+        * variable.
+        *********************************************************************/
         public void TestMoveCounter()
         {
             // 1. Arrange:
@@ -112,13 +120,17 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * This function tests if the IsAvailable function will return a correct
+        * value for any situation.
+        *********************************************************************/
         public void TestIsAvailable()
         {
             // 1. Arrange:
             Logic logic = new Logic();
             // 2. Act:
-            logic.matrix[0][0] = "X";
-            logic.matrix[1][1] = "O";
+            logic.matrix[0][0] = Global.PLAYER1;
+            logic.matrix[1][1] = Global.PLAYER2;
             // 3. Assert:
             Assert.IsTrue(logic.IsAvailable(2, 2));
             Assert.IsFalse(logic.IsAvailable(1, 1));
@@ -300,7 +312,6 @@ namespace Test
             //3. Assert:
             Assert.AreEqual(logic.IsWon(), true);
         }
-
 
         [Test]
         public void TestIsWonInMidHorizonalPositionForO()
