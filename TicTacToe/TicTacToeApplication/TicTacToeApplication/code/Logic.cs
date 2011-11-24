@@ -42,6 +42,11 @@ namespace TicTacToeApplication.code
 			}
 			moveCounter++;
 		}
+
+		public bool Tie()
+		{
+			return true;
+		}
         #endregion
 
         #region flati
