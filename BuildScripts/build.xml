@@ -10,47 +10,47 @@
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <Optimize>false</Optimize>
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>@(ApplicationPath)\bin\Debug</OutputPath>
+    <OutputPath>$(ApplicationPath)\bin\Debug</OutputPath>
   </PropertyGroup>
   
  
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <Optimize>true</Optimize>
     <DebugSymbols>false</DebugSymbols>
-    <OutputPath>@(ApplicationPath)\bin\Release</OutputPath>
+    <OutputPath>$(ApplicationPath)\bin\Release</OutputPath>
   </PropertyGroup>
   
 
   
   <Target Name="Clean"> <!--Clean the build directory for future build-->
     <ItemGroup> <!--All files in bin directory-->
-      <BinFiles Include="@(ApplicationPath)\bin\*.*" />
-      <PublishFiles Include="@(ApplicationPath)\Published\*.*"/>
+      <BinFiles Include="$(ApplicationPath)\bin\*.*" />
+      <PublishFiles Include="$(ApplicationPath)\Published\*.*"/>
     </ItemGroup>
 	 <Message Text="Files to delete : @(BinFiles)" />
-    <Delete Files="@(BinFiles)" /> <!--Delete them!-->
-    <Delete Files="@(PublishFiles)"/>
-	<RemoveDir Directories="@(ApplicationPath)\bin\"/>
-	<RemoveDir Directories="@(ApplicationPath)\Published"/>
+    <Delete Files="$(BinFiles)" /> <!--Delete them!-->
+    <Delete Files="$(PublishFiles)"/>
+	<RemoveDir Directories="$(ApplicationPath)\bin\"/>
+	<RemoveDir Directories="$(ApplicationPath)\Published"/>
   </Target>
   
   
 
   <Target Name="Compile" DependsOnTargets="Clean"><!--This will not run unless we have cleaned-->
-    <MSBuild Projects="@(ApplicationPath)\TicTacToe.csproj" />
+    <MSBuild Projects="$(ApplicationPath)\TicTacToe.csproj" />
   </Target>
   
   <Target Name="Test">
-     <NUnit Assemblies="@(TestPath)\bin\Test.dll"/>
+     <NUnit Assemblies="$(TestPath)\bin\Test.dll"/>
   </Target>
 
   <Target Name="Publish">
     <ItemGroup>
-      <Executibles Include="@(ApplicationPath)\bin\Release\*.exe" />
-      <Binaries Include="@(ApplicationPath)\bin\Release\*.dll" />
+      <Executibles Include="$(ApplicationPath)\bin\Release\*.exe" />
+      <Binaries Include="$(ApplicationPath)\bin\Release\*.dll" />
     </ItemGroup>
-    <Copy SourceFiles ="@(Binaries)" DestinationFolder="Published" />
-    <Copy SourceFiles="@(Executibles)" DestinationFolder="Published" />
+    <Copy SourceFiles ="$(Binaries)" DestinationFolder="Published" />
+    <Copy SourceFiles="$(Executibles)" DestinationFolder="Published" />
   </Target>
   
   <Target Name="Message">
