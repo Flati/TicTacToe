@@ -20,8 +20,8 @@ namespace TicTacToeApplication
         {
             InitializeComponent();
             logic = new Logic();
-            cross = Image.FromFile("..\\..\\etc\\kross.png");
-            circle = Image.FromFile("..\\..\\etc\\hringur.png");
+            cross = Image.FromFile("..\\..\\Images\\kross.png");
+            circle = Image.FromFile("..\\..\\Images\\hringur.png");
         }
 
         public void MarkField(Button field)
@@ -36,7 +36,11 @@ namespace TicTacToeApplication
         {
             logic.MarkMatrix(x, y);
             if (logic.IsWon() || logic.Tie())
+            {
+                //logic.WinScreen();
                 Close();
+            }
+            logic.ChangePlayers();
         }
 
         private void TopLeft_Click(object sender, EventArgs e)

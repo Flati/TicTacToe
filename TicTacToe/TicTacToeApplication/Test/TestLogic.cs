@@ -175,10 +175,9 @@ namespace Test
             logic.matrix[0][0] = "X";
             logic.matrix[0][1] = "X";
             logic.matrix[0][2] = "X";
-            logic.isWon();
            
             // 3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -188,14 +187,12 @@ namespace Test
             Logic logic = new Logic();
 
             // 2. Act:
-            logic.isWon();
             logic.matrix[1][0] = "X";
             logic.matrix[1][1] = "X";
             logic.matrix[1][2] = "X";
-            logic.isWon();
             
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -208,10 +205,9 @@ namespace Test
             logic.matrix[2][0] = "X";
             logic.matrix[2][1] = "X";
             logic.matrix[2][2] = "X";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -224,10 +220,9 @@ namespace Test
             logic.matrix[0][0] = "X";
             logic.matrix[1][0] = "X";
             logic.matrix[2][0] = "X";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -240,10 +235,9 @@ namespace Test
             logic.matrix[1][0] = "X";
             logic.matrix[1][1] = "X";
             logic.matrix[1][2] = "X";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -256,10 +250,9 @@ namespace Test
             logic.matrix[2][0] = "X";
             logic.matrix[2][1] = "X";
             logic.matrix[2][2] = "X";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -272,10 +265,9 @@ namespace Test
             logic.matrix[0][0] = "X";
             logic.matrix[1][1] = "X";
             logic.matrix[2][2] = "X";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -288,10 +280,9 @@ namespace Test
             logic.matrix[2][2] = "X";
             logic.matrix[1][1] = "X";
             logic.matrix[0][0] = "X";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -301,14 +292,12 @@ namespace Test
             Logic logic = new Logic();
 
             // 2. Act:
-            logic.isWon();
             logic.matrix[0][0] = "O";
             logic.matrix[0][1] = "O";
             logic.matrix[0][2] = "O";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
 
@@ -319,14 +308,12 @@ namespace Test
             Logic logic = new Logic();
 
             // 2. Act:
-            logic.isWon();
             logic.matrix[1][0] = "O";
             logic.matrix[1][1] = "O";
             logic.matrix[1][2] = "O";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -339,10 +326,9 @@ namespace Test
             logic.matrix[2][0] = "O";
             logic.matrix[2][1] = "O";
             logic.matrix[2][2] = "O";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -355,10 +341,9 @@ namespace Test
             logic.matrix[0][0] = "O";
             logic.matrix[1][0] = "O";
             logic.matrix[2][0] = "O";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -371,10 +356,9 @@ namespace Test
             logic.matrix[1][0] = "O";
             logic.matrix[1][1] = "O";
             logic.matrix[1][2] = "O";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -387,10 +371,9 @@ namespace Test
             logic.matrix[2][0] = "O";
             logic.matrix[2][1] = "O";
             logic.matrix[2][2] = "O";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -403,10 +386,9 @@ namespace Test
             logic.matrix[0][0] = "O";
             logic.matrix[1][1] = "O";
             logic.matrix[2][2] = "O";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
@@ -419,10 +401,9 @@ namespace Test
             logic.matrix[2][2] = "O";
             logic.matrix[1][1] = "O";
             logic.matrix[0][0] = "O";
-            logic.isWon();
 
             //3. Assert:
-            Assert.AreEqual(logic.isWon(), true);
+            Assert.AreEqual(logic.IsWon(), true);
         }
 
         [Test]
