@@ -40,9 +40,6 @@
     <MSBuild Projects="$(ApplicationPath)\TicTacToeApplication.csproj" />
   </Target>
   
-  <Target Name="Test">
-     <NUnit Assemblies="$(TestPath)\bin\Test.dll"/>
-  </Target>
 
   <Target Name="Publish">
     <ItemGroup>
