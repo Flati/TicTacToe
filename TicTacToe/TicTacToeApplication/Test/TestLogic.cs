@@ -57,6 +57,20 @@ namespace Test
         #endregion
 
         #region hjalli
+        
+        [Test]
+        public void TestCurrentPlayer()
+        {
+            // 1. Arrange:
+            Logic logic = new Logic();
+
+            // 2. Act:
+
+
+            // 3. Assert:
+            Assert.AreEqual(logic.currentPlayer, Global.PLAYER1);
+        }
+
         #endregion
 
         #region petur
