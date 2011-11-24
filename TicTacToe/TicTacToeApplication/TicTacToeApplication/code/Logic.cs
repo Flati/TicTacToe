@@ -36,11 +36,20 @@ namespace TicTacToeApplication.code
 
 		public bool Tie()
 		{
-			return moveCounter > 8;
+            if (moveCounter > 8)
+            {
+                dataReader.Winning("tie");
+                return true;
+            }
+            return false;
 		}
         #endregion
 
         #region flati
+        /*********************************************************************
+        * This function checks if the given index in the matrix is already
+        * marked.
+        *********************************************************************/
         public bool IsAvailable(int x, int y)
         {
             if (matrix[x][y] == "E")
@@ -77,30 +86,35 @@ namespace TicTacToeApplication.code
         #region petur
         public bool IsWon()
         {
+            bool isWon = false;
             for (int i = 0; i < 3; i++)
             {
                 if (matrix[i][0] == matrix[i][1] && matrix[i][0] == matrix[i][2])
                 {
                     if (matrix[i][0] != "E")
-                        return true;
+                        isWon =  true;
                 }
                 else if (matrix[0][i] == matrix[1][i] && matrix[0][i] == matrix[2][i])
                 {
                     if (matrix[0][i] != "E")
-                        return true;
+                        isWon =  true;
                 }
             }
             if (matrix[0][0] == matrix[1][1] && matrix[0][0] == matrix[2][2])
             {
                 if (matrix[0][0] != "E")
-                    return true;
+                    isWon = true;
             }
             else if (matrix[2][0] == matrix[1][1] && matrix[2][0] == matrix[0][2])
             {
                 if (matrix[1][1] != "E")
-                    return true;
+                    isWon = true;
             }
-            return false;
+            if (isWon)
+            {
+                dataReader.Winning(currentPlayer);
+            }
+            return isWon;
         }
         #endregion
 
