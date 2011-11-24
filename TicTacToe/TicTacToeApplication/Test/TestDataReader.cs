@@ -12,28 +12,17 @@ namespace Test
     class TestDataReader
     {
         [Test]
+        /*********************************************************************
+        * This function tests if the number of player 1 wins increases by 1
+        * when player 1 wins the game.
+        *********************************************************************/
         public void TestPlayer1Win()
         {
             // 1. Arrange:
             DataReader reader = new DataReader();
-            int player1;
-            int player2;
-            int ties;
-            if (File.Exists(reader.path))
-            {
-                using (StreamReader sr = new StreamReader(reader.path))
-                {
-                    player1 = int.Parse(sr.ReadLine());
-                    player2 = int.Parse(sr.ReadLine());
-                    ties = int.Parse(sr.ReadLine());
-                }
-            }
-            else
-            {
-                player1 = 0;
-                player2 = 0;
-                ties = 0;
-            }
+            int player1 = Global.PLAYER1WIN;
+            int player2 = Global.PLAYER2WIN;
+            int ties = Global.TIENUMBER;
 
             // 2. Act:
             reader.Winning(Global.PLAYER1);
@@ -45,28 +34,17 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * This function tests if the number of player 2 wins increased by 1
+        * when player 2 wins the game.
+        *********************************************************************/
         public void TestPlayer2Win()
         {
             // 1. Arrange:
             DataReader reader = new DataReader();
-            int player1;
-            int player2;
-            int ties;
-            if (File.Exists(reader.path))
-            {
-                using (StreamReader sr = new StreamReader(reader.path))
-                {
-                    player1 = int.Parse(sr.ReadLine());
-                    player2 = int.Parse(sr.ReadLine());
-                    ties = int.Parse(sr.ReadLine());
-                }
-            }
-            else
-            {
-                player1 = 0;
-                player2 = 0;
-                ties = 0;
-            }
+            int player1 = Global.PLAYER1WIN;
+            int player2 = Global.PLAYER2WIN;
+            int ties = Global.TIENUMBER;
 
             // 2. Act:
             reader.Winning(Global.PLAYER2);
@@ -78,28 +56,17 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * This function tests if the number of ties wins increased by 1
+        * when the game results in a tie.
+        *********************************************************************/
         public void TestTie()
         {
             // 1. Arrange:
             DataReader reader = new DataReader();
-            int player1;
-            int player2;
-            int ties;
-            if (File.Exists(reader.path))
-            {
-                using (StreamReader sr = new StreamReader(reader.path))
-                {
-                    player1 = int.Parse(sr.ReadLine());
-                    player2 = int.Parse(sr.ReadLine());
-                    ties = int.Parse(sr.ReadLine());
-                }
-            }
-            else
-            {
-                player1 = 0;
-                player2 = 0;
-                ties = 0;
-            }
+            int player1 = Global.PLAYER1WIN;
+            int player2 = Global.PLAYER2WIN;
+            int ties = Global.TIENUMBER;
 
             // 2. Act:
             reader.Winning("tie");
@@ -111,14 +78,17 @@ namespace Test
         }
 
         [Test]
+        /*********************************************************************
+        * This function tests if the file is created when no file is found.
+        *********************************************************************/
         public void TestNoFileExists()
         {
             // 1. Arrange:
-            DataReader reader = new DataReader();
-            if (File.Exists(reader.path))
+            if (File.Exists("ProgressLog.txt"))
             {
-                File.Delete(reader.path);
+                File.Delete("ProgressLog.txt");
             }
+            DataReader reader = new DataReader();
 
             // 2. Act:
             reader.Winning(Global.PLAYER1);
