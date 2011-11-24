@@ -8,9 +8,11 @@ namespace TicTacToeApplication.code
     public class Logic
     {
         public List<List<string>> matrix;
+        public string currentPlayer;
 
         public Logic()
         {
+            currentPlayer = Global.PLAYER1;
             matrix = new List<List<string>>();
             for (int i = 0; i < 3; i++)
             {
