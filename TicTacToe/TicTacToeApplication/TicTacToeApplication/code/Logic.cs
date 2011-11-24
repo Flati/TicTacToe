@@ -71,7 +71,6 @@ namespace TicTacToeApplication.code
             else
                 currentPlayer = Global.PLAYER1;
         }
-
         #endregion
 
         #region petur
