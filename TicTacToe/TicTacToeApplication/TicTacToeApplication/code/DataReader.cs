@@ -8,7 +8,7 @@ namespace TicTacToeApplication.code
 {
     public class DataReader
     {
-        private string path = "ProgressLog.txt";
+        public string path = "ProgressLog.txt";
         public void Winning(string winner)
         {
             if (File.Exists(path))
