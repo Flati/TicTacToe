@@ -41,8 +41,6 @@ namespace Test
 		public void TestMarkMatrix()
 		{
 			// 1. Arrange:
-			Global.PLAYER1 = "Siggi";
-			Global.PLAYER2 = "Gunnar";
 			Logic logic = new Logic();
 			int x1 = 1, y1 = 2;
 			int x2 = 2, y2 = 1;
@@ -67,6 +65,25 @@ namespace Test
 			}
 
 		}
+
+		[Test]
+		public void TestTie()
+		{
+			// 1. Arrange:
+			Logic logic = new Logic();
+			
+			// 2. Act.
+
+			// 3. Assert:
+			Assert.IsFalse(logic.Tie() );
+
+			// 2. Act.
+			logic.moveCounter = 9;
+
+			// 3. Assert:
+			Assert.IsTrue(logic.Tie() );
+		}
+
         #endregion
 
         #region flati
