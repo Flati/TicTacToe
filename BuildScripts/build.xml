@@ -18,9 +18,14 @@
 
     <!-- Paths used troughout the script. This needs to be changed if default is not used-->
     <PropertyGroup>
-        <ApplicationPath>C:\Checkout\TicTacToe\TicTacToeApplication\TicTacToeApplication</ApplicationPath>
-        <TestPath>C:\Checkout\TicTacToe\TicTacToeApplication\Test</TestPath>
-        <NUnitPath>C:\Checkout\NUnit</NUnitPath>
+		<!-- SVNPath should be changed to wheherever you make your SVN checkout-->
+		<!---->
+		<SVNPath>C:\Checkout</SVNPath>
+		<!---->
+		<!------There filepaths should not be changed unless you know what you are doing------>
+        <ApplicationPath>$(SVNPath)\TicTacToe\TicTacToeApplication\TicTacToeApplication</ApplicationPath>
+        <TestPath>$(SVNPath)\TicTacToe\TicTacToeApplication\Test</TestPath>
+        <NUnitPath>$(SVNPath)\NUnit</NUnitPath>
         <!--Modified NUnit binary is included and should not be changed-->
         <PublishPath>C:\Published</PublishPath>
     </PropertyGroup>
