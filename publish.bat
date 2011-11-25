@@ -1,1 +1,1 @@
-rar a -m5 -ed -rr -sfx C:\Ampps\www\orninn.com\TicTacToe\%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-0,2%_%time:~3,2%.exe C:\Published
+"C:\Program Files\WinRAR\rar" a -m5 -ed -rr -sfx C:\Ampps\www\orninn.com\TicTacToe\%date:~-4,4%%date:~-7,2%%date:~-10,2%%time:~-0,2%_%time:~3,2%.exe C:\Published
