@@ -2,121 +2,122 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Run">
 
 
-	<!-- "MSBuild Community Tasks" is needed for the nunit task -->
-	<!-- get it at http://msbuildtasks.tigris.org/ -->
-	<Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
-	<UsingTask 
-		TaskName="NCover.MSBuildTasks.NCover"
-		AssemblyFile="C:\Program Files\NCover\Build Task Plugins\NCover.MSBuildTasks.dll" />
-	<UsingTask
-		TaskName="NCover.MSBuildTasks.NCoverReporting"
-		AssemblyFile="C:\Program Files\NCover\Build Task Plugins\NCover.MSBuildTasks.dll" />
+    <!-- "MSBuild Community Tasks" is needed for the nunit task -->
+    <!-- get it at http://msbuildtasks.tigris.org/ -->
+    <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+    <UsingTask
+            TaskName="NCover.MSBuildTasks.NCover"
+            AssemblyFile="C:\Program Files\NCover\Build Task Plugins\NCover.MSBuildTasks.dll"/>
+    <UsingTask
+            TaskName="NCover.MSBuildTasks.NCoverReporting"
+            AssemblyFile="C:\Program Files\NCover\Build Task Plugins\NCover.MSBuildTasks.dll"/>
 
 
-	<!-- Paths used troughout the script. This needs to be changed if default is not used-->
-  <PropertyGroup>
-	<ApplicationPath>C:\Checkout\TicTacToe\TicTacToeApplication\TicTacToeApplication</ApplicationPath>
-	<TestPath>C:\Checkout\TicTacToe\TicTacToeApplication\Test</TestPath>
-	<NUnitPath>C:\Checkout\NUnit</NUnitPath> <!--Modified NUnit binary is included and should not be changed-->
-	<PublishPath>C:\Published</PublishPath>
-	<WebPath>C:\Ampps\www\orninn.com\TicTacToe\%(CreatedTime)\</WebPath>
-  </PropertyGroup>
-  
-  
-  
-		  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
-		<Optimize>false</Optimize>
-		<DebugSymbols>true</DebugSymbols>
-		<OutputPath>$(ApplicationPath)\bin\Debug</OutputPath>
-	  </PropertyGroup>
-	  
-	 
-	  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-		<Optimize>true</Optimize>
-		<DebugSymbols>false</DebugSymbols>
-		<OutputPath>$(ApplicationPath)\bin\Release</OutputPath>
-	  </PropertyGroup>
-	  
-	  <PropertyGroup>
-  <CoverageReports>
-    <Report>
-      <ReportType>FullCoverageReport</ReportType>
-      <Format>Html</Format>
-      <OutputPath>CoverageReport\</OutputPath>
-    </Report>
-  </CoverageReports>
-</PropertyGroup>
-  
-	<!-- Clean the build folder -->  
-  <Target Name="Clean"> <!--Clean the build directory for future build-->
-    <ItemGroup> <!--All files in bin directory-->
-      <BinFiles Include="$(ApplicationPath)\bin\*.*" />
-      <PublishFiles Include="$(ApplicationPath)\Published\*.*"/>
-    </ItemGroup>
-	 <Message Text="Files to delete : @(BinFiles)" />
-    <Delete Files="$(BinFiles)" /> <!--Delete them!-->
-    <Delete Files="$(PublishFiles)"/>
-	<RemoveDir Directories="$(ApplicationPath)\bin"/>
-	<RemoveDir Directories="$(ApplicationPath)\Published"/>
-  </Target>
-  
-  
-	<!-- Compile the Project and the Test -->
-  <Target Name="Compile" DependsOnTargets="Clean"><!--This will not run unless we have cleaned-->
-    <MSBuild Projects="$(ApplicationPath)\TicTacToeApplication.csproj" />
-  </Target>
-  
-  <Target Name="CompileTest" DependsOnTargets="Clean">
-  	<MSBuild Projects="$(TestPath)\Test.csproj" />
+    <!-- Paths used troughout the script. This needs to be changed if default is not used-->
+    <PropertyGroup>
+        <ApplicationPath>C:\Checkout\TicTacToe\TicTacToeApplication\TicTacToeApplication</ApplicationPath>
+        <TestPath>C:\Checkout\TicTacToe\TicTacToeApplication\Test</TestPath>
+        <NUnitPath>C:\Checkout\NUnit</NUnitPath>
+        <!--Modified NUnit binary is included and should not be changed-->
+        <PublishPath>C:\Published</PublishPath>
+        <WebPath>C:\Ampps\www\orninn.com\TicTacToe\%(CreatedTime)\</WebPath>
+    </PropertyGroup>
+
+
+    <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+        <Optimize>false</Optimize>
+        <DebugSymbols>true</DebugSymbols>
+        <OutputPath>$(ApplicationPath)\bin\Debug</OutputPath>
+    </PropertyGroup>
+
+
+    <PropertyGroup Condition="'$(Configuration)'=='Release'">
+        <Optimize>true</Optimize>
+        <DebugSymbols>false</DebugSymbols>
+        <OutputPath>$(ApplicationPath)\bin\Release</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <CoverageReports>
+            <Report>
+                <ReportType>FullCoverageReport</ReportType>
+                <Format>Html</Format>
+                <OutputPath>CoverageReport\</OutputPath>
+            </Report>
+        </CoverageReports>
+    </PropertyGroup>
+
+    <!-- Clean the build folder -->
+    <Target Name="Clean"> <!--Clean the build directory for future build-->
+        <ItemGroup> <!--All files in bin directory-->
+            <BinFiles Include="$(ApplicationPath)\bin\*.*"/>
+            <PublishFiles Include="$(ApplicationPath)\Published\*.*"/>
+        </ItemGroup>
+        <Message Text="Files to delete : @(BinFiles)"/>
+        <Delete Files="$(BinFiles)"/>
+        <!--Delete them!-->
+        <Delete Files="$(PublishFiles)"/>
+        <RemoveDir Directories="$(ApplicationPath)\bin"/>
+        <RemoveDir Directories="$(ApplicationPath)\Published"/>
     </Target>
-	
-  	<!-- Test the Project with NUnit --> 
-	<Target Name="Test">
-		<NUnit Assemblies="$(TestPath)\bin\Debug\Test.dll" ToolPath="$(NUnitPath)" DisableShadowCopy="true" /> 
-	</Target>
-	
-	<Target Name="Coverage">
-	  <NCover ToolPath="C:\Program Files\NCover\"
-		  TestRunnerExe="$(NUnitPath)\nunit-console.exe"
-		  TestRunnerArgs="$(TestPath)\bin\Debug\Test.dll"
-		  CoverageFile="Coverage.xml"/>
-	</Target>
-	
-	
-	<Target Name="CoverageReport">
-  <NCoverReporting ToolPath="C:\Program Files\NCover\"
-      CoverageDataPaths="Coverage.xml"
-      OutputReport="$(CoverageReports)"/>
-</Target>
-  
-	<Target Name="Publish">
-		<ItemGroup>
-		  <Executibles Include="$(ApplicationPath)\bin\Release\*.exe" />
-		</ItemGroup>
-		<Copy SourceFiles="@(Executibles)" DestinationFolder="C:\Published" />
-	</Target>
-	
-	<!-- Target Run Sequence -->
-  
-  <Target Name="Release">
-    <CallTarget Targets="Clean"></CallTarget>
-    <CallTarget Targets="Compile"></CallTarget>
-	<CallTarget Targets="Publish"></CallTarget>
-  </Target>
 
-  <Target Name="Debug">
-    <CallTarget Targets="Clean"></CallTarget>
-    <CallTarget Targets="Compile"></CallTarget>
-    <CallTarget Targets="CompileTest"></CallTarget>
-	<CallTarget Targets="Test"></CallTarget>
-	<CallTarget Targets="Coverage"></CallTarget>
-	<CallTarget Targets="CoverageReport"></CallTarget>
-  </Target>
-  
+
+    <!-- Compile the Project and the Test -->
+    <Target Name="Compile" DependsOnTargets="Clean"><!--This will not run unless we have cleaned-->
+        <MSBuild Projects="$(ApplicationPath)\TicTacToeApplication.csproj"/>
+    </Target>
+
+    <Target Name="CompileTest" DependsOnTargets="Clean">
+        <MSBuild Projects="$(TestPath)\Test.csproj"/>
+    </Target>
+
+    <!-- Test the Project with NUnit -->
+    <Target Name="Test">
+        <NUnit Assemblies="$(TestPath)\bin\Debug\Test.dll" ToolPath="$(NUnitPath)" DisableShadowCopy="true"/>
+    </Target>
+
+    <Target Name="Coverage">
+        <NCover ToolPath="C:\Program Files\NCover\"
+                TestRunnerExe="$(NUnitPath)\nunit-console.exe"
+                TestRunnerArgs="$(TestPath)\bin\Debug\Test.dll"
+                CoverageFile="Coverage.xml"/>
+    </Target>
+
+
+    <Target Name="CoverageReport">
+        <NCoverReporting ToolPath="C:\Program Files\NCover\"
+                         CoverageDataPaths="Coverage.xml"
+                         OutputReport="$(CoverageReports)"/>
+    </Target>
+
+    <Target Name="Publish">
+        <ItemGroup>
+            <Executibles Include="$(ApplicationPath)\bin\Release\*.exe"/>
+        </ItemGroup>
+        <Copy SourceFiles="@(Executibles)" DestinationFolder="C:\Published"/>
+    </Target>
+
+    <!-- Target Run Sequence -->
+
+    <Target Name="Release">
+        <CallTarget Targets="Clean"></CallTarget>
+        <CallTarget Targets="Compile"></CallTarget>
+        <CallTarget Targets="Publish"></CallTarget>
+    </Target>
+
+    <Target Name="Debug">
+        <CallTarget Targets="Clean"></CallTarget>
+        <CallTarget Targets="Compile"></CallTarget>
+        <CallTarget Targets="CompileTest"></CallTarget>
+        <CallTarget Targets="Test"></CallTarget>
+        <CallTarget Targets="Coverage"></CallTarget>
+        <CallTarget Targets="CoverageReport"></CallTarget>
+    </Target>
+
     <Target Name="Server">
-    <CallTarget Targets="Clean"></CallTarget>
-    <CallTarget Targets="Compile"></CallTarget>
-    <CallTarget Targets="CompileTest"></CallTarget>
-  </Target>
-  
+        <CallTarget Targets="Clean"></CallTarget>
+        <CallTarget Targets="Compile"></CallTarget>
+        <CallTarget Targets="CompileTest"></CallTarget>
+    </Target>
+
 </Project>
