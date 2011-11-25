@@ -16,13 +16,13 @@
             AssemblyFile="C:\Program Files\NCover\Build Task Plugins\NCover.MSBuildTasks.dll"/>
 
 
-    <!-- Paths used troughout the script. This needs to be changed if default is not used-->
+    <!-- Paths used troughout the script. This needs to be changed if default is not used -->
     <PropertyGroup>
-		<!-- SVNPath should be changed to wheherever you make your SVN checkout-->
-		<!---->
+		<!-- SVNPath should be changed to wheherever you make your SVN checkout -->
+		<!--=-->
 		<SVNPath>C:\Checkout</SVNPath>
-		<!---->
-		<!------There filepaths should not be changed unless you know what you are doing------>
+		<!--=-->
+		<!-- There filepaths should not be changed unless you know what you are doing -->
         <ApplicationPath>$(SVNPath)\TicTacToe\TicTacToeApplication\TicTacToeApplication</ApplicationPath>
         <TestPath>$(SVNPath)\TicTacToe\TicTacToeApplication\Test</TestPath>
         <NUnitPath>$(SVNPath)\NUnit</NUnitPath>
