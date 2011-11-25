@@ -63,9 +63,7 @@
 	<Target Name="Publish">
 		<ItemGroup>
 		  <Executibles Include="$(ApplicationPath)\bin\Release\*.exe" />
-		  <Binaries Include="$(ApplicationPath)\bin\Release\*.dll" />
 		</ItemGroup>
-		<Copy SourceFiles ="@(Binaries)" DestinationFolder="C:\Published" />
 		<Copy SourceFiles="@(Executibles)" DestinationFolder="C:\Published" />
 	</Target>
 	
