@@ -5,6 +5,9 @@
     <!-- "MSBuild Community Tasks" is needed for the nunit task -->
     <!-- get it at http://msbuildtasks.tigris.org/ -->
     <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets"/>
+	
+	<!-- "NCover" is needed for the Code Coverage task -->
+    <!-- get it at http://www.ncover.com/ -->
     <UsingTask
             TaskName="NCover.MSBuildTasks.NCover"
             AssemblyFile="C:\Program Files\NCover\Build Task Plugins\NCover.MSBuildTasks.dll"/>
@@ -20,23 +23,21 @@
         <NUnitPath>C:\Checkout\NUnit</NUnitPath>
         <!--Modified NUnit binary is included and should not be changed-->
         <PublishPath>C:\Published</PublishPath>
-        <WebPath>C:\Ampps\www\orninn.com\TicTacToe\%(CreatedTime)\</WebPath>
     </PropertyGroup>
 
-
+    <!-- Debug and Release optimization -->
     <PropertyGroup Condition="'$(Configuration)'=='Debug'">
         <Optimize>false</Optimize>
         <DebugSymbols>true</DebugSymbols>
         <OutputPath>$(ApplicationPath)\bin\Debug</OutputPath>
     </PropertyGroup>
-
-
+	
     <PropertyGroup Condition="'$(Configuration)'=='Release'">
         <Optimize>true</Optimize>
         <DebugSymbols>false</DebugSymbols>
         <OutputPath>$(ApplicationPath)\bin\Release</OutputPath>
     </PropertyGroup>
-
+    <!-- Configuration on how the coverage report is generated -->
     <PropertyGroup>
         <CoverageReports>
             <Report>
@@ -76,6 +77,7 @@
         <NUnit Assemblies="$(TestPath)\bin\Debug\Test.dll" ToolPath="$(NUnitPath)" DisableShadowCopy="true"/>
     </Target>
 
+	<!-- Generate the Coverage XML -->
     <Target Name="Coverage">
         <NCover ToolPath="C:\Program Files\NCover\"
                 TestRunnerExe="$(NUnitPath)\nunit-console.exe"
@@ -83,13 +85,14 @@
                 CoverageFile="Coverage.xml"/>
     </Target>
 
-
+	<!-- Generate the Coverage report from the xml -->
     <Target Name="CoverageReport">
         <NCoverReporting ToolPath="C:\Program Files\NCover\"
                          CoverageDataPaths="Coverage.xml"
                          OutputReport="$(CoverageReports)"/>
     </Target>
 
+	<!-- Publish application release files to another folder -->
     <Target Name="Publish">
         <ItemGroup>
             <Executibles Include="$(ApplicationPath)\bin\Release\*.exe"/>
@@ -97,8 +100,8 @@
         <Copy SourceFiles="@(Executibles)" DestinationFolder="C:\Published"/>
     </Target>
 
+	
     <!-- Target Run Sequence -->
-
     <Target Name="Release">
         <CallTarget Targets="Clean"></CallTarget>
         <CallTarget Targets="Compile"></CallTarget>
